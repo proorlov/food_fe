@@ -3,20 +3,50 @@
   'use strict';
 
   angular
-    .module('food.itemsService', [])
-    .service('itemsService', itemsService);
+    .module('food.ItemsService', [])
+    .service('ItemsService', ItemsService);
 
-  itemsService.$inject = ['$http', '$q', 'config', '$stateParams', 'auth'];
+  ItemsService.$inject = ['$http'];
 
-  function itemsService($http, $q, config, $stateParams, auth) {
+  function ItemsService($http) {
 
-    var data = false;
-    var parameter = '';
-    var username = '';
-    var oldUserName = null;
+    this.getItems = function(filter) {
+      if(filter) {
 
+      }
+      else {
+        var data = [
+          {images: {
+            exppath: "",
+            realpath: ""
+          },
+            user: {
+              name: "Adam",
+              avatar: "img/adam.jpg"
+            },
+            title: "My new food",
+            description: "It's kind of description"
+          },
+          {
+            images: {
+              exppath: "",
+              realpath: ""
+            },
+            user: {
+              name: "Ben",
+              avatar: "img/ben.png"
+            },
+            title: "New food",
+            description: "It's kind of description"
+          }
+        ];
+      }
 
+      return data;
+    };
 
 
   }
 })();
+
+

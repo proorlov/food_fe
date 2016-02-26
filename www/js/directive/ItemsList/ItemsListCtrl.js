@@ -6,11 +6,13 @@
     .module('food.ItemsListCtrl', [])
     .controller('ItemsListCtrl', ItemsListCtrl);
 
-  ItemsListCtrl.$inject = [];
+  ItemsListCtrl.$inject = ['ItemsService'];
 
-  function ItemsListCtrl() {
+  function ItemsListCtrl(ItemsService) {
     var itemsListCtrl = this;
-    console.log("pizdec");
+
+    itemsListCtrl.data = ItemsService.getItems();
+
   }
 
 })(angular);

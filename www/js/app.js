@@ -1,8 +1,9 @@
 
 angular.module('food', [
   'ionic',
-  'food.itemsService',
-  'food.ItemsListCtrl'
+  'food.ItemsService',
+  'food.ItemsListCtrl',
+  'food.footer'
 ])
 
 .run(function($ionicPlatform) {
