@@ -6,30 +6,34 @@
     .module('food.ItemsService', [])
     .service('ItemsService', ItemsService);
 
-  ItemsService.$inject = ['$http'];
+  ItemsService.$inject = ['$http', '$q'];
 
-  function ItemsService($http) {
+  function ItemsService($http, $q) {
 
+    var self = this;
     this.data = [];
     this.state = 0;
 
     this.getItems = function(filter) {
+
+      var deferred = $q.defer();
       if(filter) {
 
       }
       else {
         $http({
           method: 'GET',
-          url: 'http://food.codepr.ru/getList?count=10&id=' + this.state
+          url: 'http://food.codepr.ru/getList?count=10'
         }).then(function successCallback(response) {
-          this.data = response;
+          //self.data = response.data;
+          deferred.resolve(response.data);
         }, function errorCallback(response) {
-          this.data = response;
+            //self.data = response.data;
+          deferred.reject(response);
         });
       }
 
-      //return data;
-      return this.data;
+      return deferred.promise;
     };
 
 
