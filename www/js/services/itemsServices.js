@@ -10,39 +10,26 @@
 
   function ItemsService($http) {
 
+    this.data = [];
+    this.state = 0;
+
     this.getItems = function(filter) {
       if(filter) {
 
       }
       else {
-        var data = [
-          {images: {
-            exppath: "",
-            realpath: ""
-          },
-            user: {
-              name: "Adam",
-              avatar: "img/adam.jpg"
-            },
-            title: "My new food",
-            description: "It's kind of description"
-          },
-          {
-            images: {
-              exppath: "",
-              realpath: ""
-            },
-            user: {
-              name: "Ben",
-              avatar: "img/ben.png"
-            },
-            title: "New food",
-            description: "It's kind of description"
-          }
-        ];
+        $http({
+          method: 'GET',
+          url: 'http://food.codepr.ru/getList?count=10&id=' + this.state
+        }).then(function successCallback(response) {
+          this.data = response;
+        }, function errorCallback(response) {
+          this.data = response;
+        });
       }
 
-      return data;
+      //return data;
+      return this.data;
     };
 
 

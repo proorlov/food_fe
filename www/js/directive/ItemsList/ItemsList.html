@@ -5,7 +5,7 @@
       <li class="list card" ng-repeat="item in itemsListCtrl.data">
 
         <div class="item item-avatar">
-          <img src="{{item.user.avatar}}">
+          <img src="../img/ben.png">
           <h2>{{item.user.name}}</h2>
           <p>Nine Inch Nails</p>
         </div>
@@ -13,10 +13,10 @@
         <div class="item item-image">
           <div
             class="post-image"
-            style="background-image: url(http://migrationology.com/wp-content/uploads/2016/01/best-singapore-food-600x450.jpg);"></div>
+            style="background-image: url({{item.expectationUrl}});"></div>
           <div
             class="post-image"
-            style="background-image: url(http://www.japan-guide.com/g10/interest_food_top.jpg);
+            style="background-image: url({{item.realityUrl}});
           "></div>
         </div>
 
@@ -25,6 +25,10 @@
         </div>
 
       </li>
+
+      <button class="button button-small button-assertive" ng-click="temsListCtrl.loadMore()">
+        Load more
+      </button>
     </ul>
 
 

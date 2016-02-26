@@ -13,6 +13,10 @@
 
     itemsListCtrl.data = ItemsService.getItems();
 
+    itemsListCtrl.loadMore = function() {
+      itemsListCtrl.data = ItemsService.getItems();
+    }
+
   }
 
 })(angular);
