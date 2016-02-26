@@ -9,7 +9,7 @@
 
   function footer() {
 
-    FooterCtrl.$inject = [];
+    FooterCtrl.$inject = ['$state'];
 
     return {
       replace: true,
@@ -22,13 +22,7 @@
     };
 
 
-    function FooterCtrl(ItemsListCtrl) {
-
-      var footerCtrl = this;
-
-      footerCtrl.addPost = function() {
-
-      }
+    function FooterCtrl($state) {
     }
   }
 

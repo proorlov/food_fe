@@ -3,7 +3,9 @@ angular.module('food', [
   'ionic',
   'food.ItemsService',
   'food.ItemsListCtrl',
-  'food.footer'
+  'food.footer',
+  'food.AddPostCtrl',
+  'food.Camera'
 ])
 
 .run(function($ionicPlatform) {
@@ -26,13 +28,24 @@ angular.module('food', [
 
   $stateProvider
 
-  // setup an abstract state for the tabs directive
+
     .state('ItemsList', {
       url: '/',
       templateUrl: 'js/directive/ItemsList/ItemsList.html',
       controller: 'ItemsListCtrl',
       controllerAs: 'itemsListCtrl'
+    })
+
+    .state('addPost', {
+      url: '/addPost',
+      templateUrl: 'js/directive/AddPost/AddPost.html',
+      controller: 'AddPostCtrl',
+      controllerAs: 'addPostCtrl'
     });
+
+
+
+
 
 
   // if none of the above states are matched, use this as the fallback
