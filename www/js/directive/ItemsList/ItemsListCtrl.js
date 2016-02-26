@@ -10,17 +10,24 @@
 
   function ItemsListCtrl(ItemsService, $location) {
     var itemsListCtrl = this;
+
     itemsListCtrl.domain = 'http://food.codepr.ru';
+
+    // initial data
     ItemsService.getItems().then(function(resp){
       itemsListCtrl.data = resp;
-      console.log(resp);
     },function(resp){
       itemsListCtrl.data = resp;
-      console.log(resp);
     });
 
+
+    // load more posts
     itemsListCtrl.loadMore = function() {
-      itemsListCtrl.data = ItemsService.getItems();
+     ItemsService.getItems().then(function(resp){
+        itemsListCtrl.data = resp;
+      },function(resp){
+        itemsListCtrl.data = resp;
+      });
     }
 
   }

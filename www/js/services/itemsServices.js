@@ -12,7 +12,7 @@
 
     var self = this;
     this.data = [];
-    this.state = 0;
+    this.state = null;
 
     this.getItems = function(filter) {
 
@@ -21,12 +21,17 @@
 
       }
       else {
+        var url = self.state == null ? 'http://food.codepr.ru/getList?count=10' : 'http://food.codepr.ru/getList?count=10&id=' + self.state;
+
+
         $http({
           method: 'GET',
-          url: 'http://food.codepr.ru/getList?count=10'
+          url: url
         }).then(function successCallback(response) {
-          //self.data = response.data;
-          deferred.resolve(response.data);
+          self.state = response.data[response.data.length-1].id;
+          self.data = self.data.concat(response.data);
+
+          deferred.resolve(self.data);
         }, function errorCallback(response) {
             //self.data = response.data;
           deferred.reject(response);

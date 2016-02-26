@@ -22,8 +22,13 @@
     };
 
 
-    function FooterCtrl() {
+    function FooterCtrl(ItemsListCtrl) {
 
+      var footerCtrl = this;
+
+      footerCtrl.addPost = function() {
+
+      }
     }
   }
 
