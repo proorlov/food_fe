@@ -6,9 +6,9 @@
     .module('food.AddPostCtrl', [])
     .controller('AddPostCtrl', AddPostCtrl);
 
-  AddPostCtrl.$inject = ['Camera', 'appService'];
+  AddPostCtrl.$inject = ['appService', '$cordovaCamera'];
 
-  function AddPostCtrl(Camera, AppService) {
+  function AddPostCtrl(AppService, $cordovaCamera) {
     var addPostCtrl = this;
 
     addPostCtrl.selectedCountry = {};
@@ -25,21 +25,41 @@
       "cityId": "10"
     };
 
-    addPostCtrl.tempSrcImage = {
-      exp: "",
-      real: ""
-    };
+
 
     addPostCtrl.status = "";
 
-    // Add new photo
-    addPostCtrl.addNewPhoto = function(type) {
-      Camera.getPicture().then(function(imageURI) {
-        addPostCtrl.tempSrcImage[type] = imageURI;
+
+
+
+    var options = {
+      quality: 50,
+      destinationType: $cordovaCamera.DestinationType.DATA_URL,
+      sourceType: $cordovaCamera.PictureSourceType.CAMERA,
+      encodingType:$cordovaCamera.EncodingType.JPEG,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
+    };
+
+    // Add new photo in exp
+    addPostCtrl.addNewPhotoExp = function() {
+      $cordovaCamera.getPicture().then(function(imageData) {
+        addPostCtrl.newPost.exp = imageData;
       }, function(err) {
         console.err(err);
       });
     };
+
+    // Add new photo in real
+    addPostCtrl.addNewPhotoExp = function() {
+      $cordovaCamera.getPicture().then(function(imageData) {
+        addPostCtrl.newPost.real = imageData;
+      }, function(err) {
+        console.err(err);
+      });
+    };
+
+
 
     // Add new post
     addPostCtrl.addPost = function() {
