@@ -15,6 +15,7 @@
     addPostCtrl.countries = AppService.getCities();
     addPostCtrl.places = AppService.getPlaces();
     addPostCtrl.userCity = AppService.getUserCity();
+    var Camera = '';
 
     addPostCtrl.newPost = {
       "userId": "10",
@@ -30,14 +31,15 @@
     addPostCtrl.status = "";
 
 
-    var options = {
-      quality: 50,
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,
-      encodingType: Camera.EncodingType.JPEG,
-      saveToPhotoAlbum: false,
-      correctOrientation:true
-    };
+    if(Camera) {
+      var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        correctOrientation:true
+      };
+    }
 
     // Add new photo in exp
     addPostCtrl.addNewPhotoExp = function() {
