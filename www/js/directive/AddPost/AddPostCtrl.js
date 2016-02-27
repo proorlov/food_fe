@@ -19,8 +19,8 @@
     addPostCtrl.newPost = {
       "userId": "10",
       "placeId": "1 ",
-      "exp.jpg": "",
-      "rel.jpg": "",
+      "exp": "",
+      "rel": "",
       "description": "",
       "cityId": "10"
     };
@@ -37,6 +37,14 @@
 
     // Add new post
     addPostCtrl.addPost = function() {
+
+      var blob = new Blob([imageBase64], {type: 'image/png'});
+      var file1 = new File([blob], 'addPostCtrl.newPost.exp');
+      var file2 = new File([blob], 'addPostCtrl.newPost.rel');
+
+      addPostCtrl.newPost.exp = file1;
+      addPostCtrl.newPost.rel = file2;
+
       AppService.addPost(addPostCtrl.newPost);
     }
   }
