@@ -1,38 +1,36 @@
-<ion-view view-title="FoodInspector">
-  <ion-content class="padding">
+<div class="bar bar-header bar-light">
+  <h1 class="title">FoodInspector</h1>
+  <a class="button button-clear button-positive" ui-sref="filter"><i style="font-size: 24px" class="ion-ios-settings-strong"></i></a>
+</div>
+<ion-content>
+  <ul>
+    <li class="list card" ng-repeat="item in itemsListCtrl.data">
 
-    <ul>
-      <li class="list card" ng-repeat="item in itemsListCtrl.data">
+      <div class="item item-avatar">
+        <img src="../img/ben.png">
+        <h2>{{item.user.name}}</h2>
+        <p>Nine Inch Nails</p>
+      </div>
 
-        <div class="item item-avatar">
-          <img src="../img/ben.png">
-          <h2>{{item.user.name}}</h2>
-          <p>Nine Inch Nails</p>
-        </div>
+      <div class="item item-image">
+        <div
+          class="post-image"
+          style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}});"></div>
+        <div
+          class="post-image"
+          style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}});
+        "></div>
+      </div>
 
-        <div class="item item-image">
-          <div
-            class="post-image"
-            style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}});"></div>
-          <div
-            class="post-image"
-            style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}});
-          "></div>
-        </div>
+      <div class="item" href="#">
+        {{item.description}}
+      </div>
 
-        <div class="item" href="#">
-          {{item.description}}
-        </div>
+    </li>
 
-      </li>
-
-      <button class="button button-small button-assertive" ng-click="itemsListCtrl.loadMore()">
-        Load more
-      </button>
-    </ul>
-
-
-
-  </ion-content>
-  <footer></footer>
-</ion-view>
+    <button class="button button-small button-assertive" ng-click="itemsListCtrl.loadMore()">
+      Load more
+    </button>
+  </ul>
+</ion-content>
+<footer></footer>
