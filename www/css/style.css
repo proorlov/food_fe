@@ -21,6 +21,10 @@
   border-left: 0;
 }
 
+.post-image_load [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  display: block !important;
+}
+
 .item-image__hint {
   cursor: pointer;
   position: absolute;
@@ -48,4 +52,8 @@
 textarea {
   height: 80px;
   resize: none;
+}
+
+.hidden {
+  display: none;
 }

@@ -3,6 +3,7 @@ angular.module('food', [
   'ionic',
   'angucomplete-alt',
   'ngCordova',
+  'ngFileUpload',
   'ngCordova.plugins.instagram',
   'food.ItemsService',
   'food.appService',

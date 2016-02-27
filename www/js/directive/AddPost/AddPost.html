@@ -5,13 +5,13 @@
 <ion-content class="padding">
 
   <form>
-    <div class="item-image item-image_new clearfix">
-      <div
-          ng-click="addPostCtrl.addNewPhotoExp()"
-          class="post-image post-image_load"
-          style="background-image: url({{addPostCtrl.newPost.exp}});
-      ">
 
+    <div class="item-image item-image_new clearfix">
+
+      <!-- Expectation -->
+      <div class="post-image post-image_load"  ngf-background="addPostCtrl.newPost.exp"   ngf-capture='camera' ng-model="addPostCtrl.newPost.exp" ngf-select="addPostCtrl.upload($file)"  type="file" name="file" accept="image/*">
+
+        <!-- Hidden file block -->
 
         <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.exp}}">
           <i class="ion-android-camera post-image__icon"></i>
@@ -22,22 +22,24 @@
         </div>
 
       </div>
-      <div
-          ng-click="addPostCtrl.addNewPhotoReal()"
-          class="post-image post-image_load"
-          style="background-image: url({{addPostCtrl.newPost.real}});
-      ">
+
+      <!-- Expectation -->
+      <div class="post-image post-image_load"  ngf-background="addPostCtrl.newPost.real"  ngf-capture='camera' ng-model="addPostCtrl.newPost.real" ngf-select="addPostCtrl.upload($file)" ngf-background="file-real"  ngf-as-background="true" type="file" name="file-real" accept="image/*">
+
+        <!-- Hidden file block -->
 
         <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.real}}">
-          <i class="ion-android-camera"></i>
+          <i class="ion-android-camera post-image__icon"></i>
 
           <span>
-            Add <br> reallity <br> photo
+            Add expectation photos
           </span>
         </div>
 
-
       </div>
+
+
+
     </div>
 
     <label class="item item-input item-stacked-label" style="margin-top:20px">
@@ -79,15 +81,8 @@
     </label>
 
 
-    <div>
-      {{addPostCtrl.status}}
-    </div>
 
   </form>
-
-  <p>
-    {{addPostCtrl.newPost.exp}}
-  </p>
 
 </ion-content>
 <button class="bar bar-footer bar-light" ng-click = "addPostCtrl.addPost()">
