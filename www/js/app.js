@@ -7,7 +7,8 @@ angular.module('food', [
   'food.ItemsListCtrl',
   'food.footer',
   'food.AddPostCtrl',
-  'food.Camera'
+  'food.Camera',
+  'food.filter'
 ])
 
 .run(function($ionicPlatform) {
@@ -43,6 +44,13 @@ angular.module('food', [
       templateUrl: 'js/directive/AddPost/AddPost.html',
       controller: 'AddPostCtrl',
       controllerAs: 'addPostCtrl'
+    })
+
+    .state('filter', {
+      url: '/filter',
+      templateUrl: 'js/directive/filter/filter.html',
+      controller: 'FilterCtrl',
+      controllerAs: 'filterCtrl'
     });
 
 
