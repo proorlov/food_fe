@@ -4,6 +4,7 @@ angular.module('food', [
   'angucomplete-alt',
   'food.ItemsService',
   'food.appService',
+  'food.AuthCtrl',
   'food.ItemsListCtrl',
   'food.footer',
   'food.AddPostCtrl',
@@ -38,14 +39,19 @@ angular.module('food', [
       controllerAs: 'itemsListCtrl'
     })
 
+    .state('Auth', {
+      url: '/login',
+      templateUrl: 'js/directive/Auth/Auth.html',
+      controller: 'AuthCtrl',
+      controllerAs: 'authCtrl'
+    })
+
     .state('addPost', {
       url: '/addPost',
       templateUrl: 'js/directive/AddPost/AddPost.html',
       controller: 'AddPostCtrl',
       controllerAs: 'addPostCtrl'
     });
-
-
 
 
 
