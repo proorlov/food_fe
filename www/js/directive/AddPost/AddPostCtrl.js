@@ -26,9 +26,7 @@
     };
 
 
-
     addPostCtrl.status = "";
-
 
     var options = {
       quality: 50,
