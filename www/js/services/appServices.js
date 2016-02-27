@@ -35,19 +35,19 @@
 
     // New post
     this.addPost = function(data) {
-      //var deferred = $q.defer();
-      //
-      //$http({
-      //  method: 'GET',
-      //  url: 'http://food.codepr.ru/getCities'
-      //}).then(function successCallback(response) {
-      //  self.cities = response.data;
-      //  deferred.resolve(response.data);
-      //}, function errorCallback(response) {
-      //  deferred.reject(response);
-      //});
-      //
-      //return deferred.promise;
+      var deferred = $q.defer();
+
+      $http({
+        method: 'POST',
+        url: 'http://food.codepr.ru/addPost'
+      }).then(function successCallback(response) {
+        self.cities = response.data;
+        deferred.resolve(response.data);
+      }, function errorCallback(response) {
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
     };
 
 

@@ -17,12 +17,12 @@
     addPostCtrl.userCity = AppService.getUserCity();
 
     addPostCtrl.newPost = {
-      userId: "",
-      placeId: "",
+      userId: "0",
+      placeId: "0",
       expectationURI: "",
       realityURI: "",
       description: "",
-      cityId: ""
+      cityId: "1"
     };
 
     // Add new photo
@@ -37,7 +37,7 @@
 
     // Add new post
     addPostCtrl.addPost = function() {
-      console.log(addPostCtrl.newPost);
+      AppService.addPost(addPostCtrl.newPost);
     }
   }
 
