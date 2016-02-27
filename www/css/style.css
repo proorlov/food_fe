@@ -41,6 +41,10 @@
   bottom: 44px;
 }
 
+.ion-ios-camera-outline {
+  color: #387EF5;
+}
+
 textarea {
   height: 80px;
   resize: none;

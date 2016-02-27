@@ -28,12 +28,19 @@
           method: 'GET',
           url: url
         }).then(function successCallback(response) {
-          self.state = response.data[response.data.length-1].id;
-          self.data = self.data.concat(response.data);
+          var tempId = response.data[response.data.length-1].id;
+
+          if(tempId != 1) {
+              self.state = tempId;
+              self.data = self.data.concat(response.data);
+          }
+          else {
+            return false;
+          }
+
 
           deferred.resolve(self.data);
         }, function errorCallback(response) {
-            //self.data = response.data;
           deferred.reject(response);
         });
       }
