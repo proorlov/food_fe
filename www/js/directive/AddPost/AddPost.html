@@ -7,13 +7,13 @@
   <form>
     <div class="item-image item-image_new clearfix">
       <div
-          ng-click="addPostCtrl.addNewPhoto('exp')"
+          ng-click="addPostCtrl.addNewPhotoExp"
           class="post-image post-image_load"
-          style="background-image: url({{addPostCtrl.newPost.expectationURI}});
+          style="background-image: url({{addPostCtrl.newPost.exp}});
       ">
 
 
-        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.expectationURI}}">
+        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.exp}}">
           <i class="ion-android-camera post-image__icon"></i>
 
           <span>
@@ -23,12 +23,12 @@
 
       </div>
       <div
-          ng-click="addPostCtrl.addNewPhoto('real')"
+          ng-click="addPostCtrl.addNewPhotoReal"
           class="post-image post-image_load"
-          style="background-image: url({{addPostCtrl.newPost.realityURI}});
+          style="background-image: url({{addPostCtrl.newPost.real}});
       ">
 
-        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.realityURI}}">
+        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.real}}">
           <i class="ion-android-camera"></i>
 
           <span>
