@@ -1,7 +1,67 @@
 <ion-view view-title="Add post">
   <ion-content class="padding">
-    <button class="button button-block button-positive" ng-click="addPostCtrl.addNewPhoto()">
-      Add new photo&nbsp;&nbsp;&nbsp;<span class="ion-android-camera"></span>
-    </button>
+
+    <form>
+      <div class="item-image item-image_new">
+        <div
+            ng-click="addPostCtrl.addNewPhoto('e')"
+            class="post-image post-image_load"
+            style="background-image: url({{addPostCtrl.newPost.expectationURI}});
+        ">
+
+
+          <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.expectationURI}}">
+            <i class="ion-android-camera post-image__icon"></i>
+
+            <span>
+              Add expectation photo
+            </span>
+          </div>
+
+        </div>
+        <div
+            ng-click="addPostCtrl.addNewPhoto('r')"
+            class="post-image post-image_load"
+            style="background-image: url({{addPostCtrl.newPost.realityURI}});
+        ">
+
+          <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.realityURI}}">
+            <i class="ion-android-camera"></i>
+
+            <span>
+              Add <br> reallity <br> photo
+            </span>
+          </div>
+
+
+        </div>
+      </div>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">
+          <i class="ion-android-pin"></i>
+          Place id
+        </span>
+        <!--<input type="text" placeholder="john@suhr.com">-->
+      </label>
+
+      <div>
+        <angucomplete-alt
+          placeholder="Search countries"
+          maxlength="50"
+          pause="100"
+          selected-object="addPostCtrl.selectedCountry"
+          local-data="addPostCtrl.countries"
+          search-fields="name"
+          title-field="name"
+          minlength="1"
+          input-class="form-control form-control-small"
+          match-class="highlight"
+        ></angucomplete-alt>
+
+      </div>
+
+
+    </form>
   </ion-content>
 </ion-view>

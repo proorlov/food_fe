@@ -6,16 +6,31 @@
     .module('food.AddPostCtrl', [])
     .controller('AddPostCtrl', AddPostCtrl);
 
-  AddPostCtrl.$inject = ['Camera'];
+  AddPostCtrl.$inject = ['Camera', 'appService'];
 
-  function AddPostCtrl(Camera) {
-    console.log(Camera);
+  function AddPostCtrl(Camera, AppService) {
     var addPostCtrl = this;
-    addPostCtrl.addNewPhoto = function() {
+    addPostCtrl.selectedCountry = {};
+    addPostCtrl.countries = AppService.getCities();
+
+
+
+    addPostCtrl.newPost = {
+      expectationURI: "",
+      realityURI: "",
+      description: "",
+      cityId: "",
+      userId: "",
+      placeId: ""
+    };
+
+    // Add new photo
+    addPostCtrl.addNewPhoto = function(type) {
       Camera.getPicture().then(function(imageURI) {
-        console.log(imageURI);
+        addPostCtrl.imageURI = imageURI;
       }, function(err) {
         console.err(err);
+        addPostCtrl.imageURI = err;
       });
     }
   }
