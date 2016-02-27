@@ -28,11 +28,12 @@
       },function(resp){
         itemsListCtrl.data = resp;
       });
-    }
+    };
 
 
     // Init app
     AppService.init();
+    AppService.defineCity();
   }
 
 })(angular);

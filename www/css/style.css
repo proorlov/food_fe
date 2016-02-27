@@ -40,3 +40,8 @@
   top: 44px;
   bottom: 44px;
 }
+
+textarea {
+  height: 80px;
+  resize: none;
+}

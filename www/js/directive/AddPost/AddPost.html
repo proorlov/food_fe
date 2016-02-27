@@ -2,9 +2,9 @@
   <ion-content class="padding">
 
     <form>
-      <div class="item-image item-image_new">
+      <div class="item-image item-image_new clearfix">
         <div
-            ng-click="addPostCtrl.addNewPhoto('e')"
+            ng-click="addPostCtrl.addNewPhoto('expectationURI')"
             class="post-image post-image_load"
             style="background-image: url({{addPostCtrl.newPost.expectationURI}});
         ">
@@ -20,7 +20,7 @@
 
         </div>
         <div
-            ng-click="addPostCtrl.addNewPhoto('r')"
+            ng-click="addPostCtrl.addNewPhoto('realityURI')"
             class="post-image post-image_load"
             style="background-image: url({{addPostCtrl.newPost.realityURI}});
         ">
@@ -37,31 +37,50 @@
         </div>
       </div>
 
-      <label class="item item-input item-stacked-label">
+      <label class="item item-input item-stacked-label" style="margin-top:20px">
         <span class="input-label">
           <i class="ion-android-pin"></i>
-          Place id
+          City
         </span>
-        <!--<input type="text" placeholder="john@suhr.com">-->
+        <input type="text" value="{{addPostCtrl.userCity}}">
       </label>
 
-      <div>
-        <angucomplete-alt
-          placeholder="Search countries"
-          maxlength="50"
-          pause="100"
-          selected-object="addPostCtrl.selectedCountry"
-          local-data="addPostCtrl.countries"
-          search-fields="name"
-          title-field="name"
-          minlength="1"
-          input-class="form-control form-control-small"
-          match-class="highlight"
-        ></angucomplete-alt>
+      <label class="item item-input item-stacked-label" style="margin-top:20px">
+        <span class="input-label">
+          <i class="ion-android-pin"></i>
+          Place
+        </span>
+        <div>
+          <angucomplete-alt
+            placeholder="Enter name of cafe"
+            maxlength="50"
+            pause="100"
+            selected-object="addPostCtrl.selectedCountry"
+            local-data="addPostCtrl.places"
+            search-fields="name"
+            title-field="name"
+            minlength="1"
+            input-class="form-control form-control-small"
+            match-class="highlight"
+          ></angucomplete-alt>
+        </div>
 
-      </div>
+      </label>
 
+      <label class="item item-input item-stacked-label" style="margin-top:20px">
+        <span class="input-label">
+          <i class="ion-android-pin"></i>
+          Description
+        </span>
+        <textarea ng-model="addPostCtrl.newPost.description" placeholder="Describe your post"></textarea>
+      </label>
 
     </form>
+
   </ion-content>
+
+  <div class="bar bar-footer bar-light" ng-click = "addPostCtrl.addPost()">
+    <a class="title">Save post</a>
+  </div>
+
 </ion-view>
