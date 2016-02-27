@@ -7,7 +7,7 @@
   <form>
     <div class="item-image item-image_new clearfix">
       <div
-          ng-click="addPostCtrl.addNewPhotoExp"
+          ng-click="addPostCtrl.addNewPhotoExp()"
           class="post-image post-image_load"
           style="background-image: url({{addPostCtrl.newPost.exp}});
       ">
@@ -17,13 +17,13 @@
           <i class="ion-android-camera post-image__icon"></i>
 
           <span>
-            Add expectation photo
+            Add expectation photos
           </span>
         </div>
 
       </div>
       <div
-          ng-click="addPostCtrl.addNewPhotoReal"
+          ng-click="addPostCtrl.addNewPhotoReal()"
           class="post-image post-image_load"
           style="background-image: url({{addPostCtrl.newPost.real}});
       ">

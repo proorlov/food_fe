@@ -23,6 +23,13 @@
 
 
     function FooterCtrl($state) {
+
+      var footerCtrl = this;
+
+      footerCtrl.addPost = function() {
+        $state.go('AddPost')
+        console.log($state);
+      }
     }
   }
 

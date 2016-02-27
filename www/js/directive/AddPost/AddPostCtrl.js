@@ -30,20 +30,18 @@
     addPostCtrl.status = "";
 
 
-
-
     var options = {
       quality: 50,
-      destinationType: $cordovaCamera.DestinationType.DATA_URL,
-      sourceType: $cordovaCamera.PictureSourceType.CAMERA,
-      encodingType:$cordovaCamera.EncodingType.JPEG,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      encodingType: Camera.EncodingType.JPEG,
       saveToPhotoAlbum: false,
       correctOrientation:true
     };
 
     // Add new photo in exp
     addPostCtrl.addNewPhotoExp = function() {
-      $cordovaCamera.getPicture().then(function(imageData) {
+      $cordovaCamera.getPicture(options).then(function(imageData) {
         addPostCtrl.newPost.exp = imageData;
       }, function(err) {
         console.err(err);
@@ -51,8 +49,8 @@
     };
 
     // Add new photo in real
-    addPostCtrl.addNewPhotoExp = function() {
-      $cordovaCamera.getPicture().then(function(imageData) {
+    addPostCtrl.addNewPhotoReal = function() {
+      $cordovaCamera.getPicture(options).then(function(imageData) {
         addPostCtrl.newPost.real = imageData;
       }, function(err) {
         console.err(err);
@@ -63,15 +61,19 @@
 
     // Add new post
     addPostCtrl.addPost = function() {
+      //
+      //var blob = new Blob([imageBase64], {type: 'image/jpg'});
+      //var file1 = new File([blob], addPostCtrl.tempSrcImage.exp);
+      //var file2 = new File([blob], addPostCtrl.tempSrcImage.real);
 
-      var blob = new Blob([imageBase64], {type: 'image/jpg'});
-      var file1 = new File([blob], addPostCtrl.tempSrcImage.exp);
-      var file2 = new File([blob], addPostCtrl.tempSrcImage.real);
+
+      alert(addPostCtrl.newPost.exp);
+      alert(addPostCtrl.newPost.real);
 
       addPostCtrl.status = "Send!";
 
-      addPostCtrl.newPost.exp = file1;
-      addPostCtrl.newPost.real = file2;
+      //addPostCtrl.newPost.exp = file1;
+      //addPostCtrl.newPost.real = file2;
 
       AppService.addPost(addPostCtrl.newPost);
     }
