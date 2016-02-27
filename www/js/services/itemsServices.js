@@ -49,6 +49,26 @@
     };
 
 
+    // New post
+    this.addPost = function(data) {
+      var deferred = $q.defer();
+
+    //  var tempData =  angular.toJson(data);
+
+      $http({
+        method: 'POST',
+        url: 'http://food.codepr.ru/addPost',
+        data: data
+      }).then(function successCallback(response) {
+        self.cities = response.data;
+        deferred.resolve(response.data);
+      }, function errorCallback(response) {
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+    };
+
   }
 })();
 

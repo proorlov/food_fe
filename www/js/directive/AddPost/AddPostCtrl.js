@@ -6,9 +6,9 @@
     .module('food.AddPostCtrl', ['ngFileUpload'])
     .controller('AddPostCtrl', AddPostCtrl);
 
-  AddPostCtrl.$inject = ['appService', '$cordovaCamera'];
+  AddPostCtrl.$inject = ['appService', 'ItemsService', '$cordovaCamera'];
 
-  function AddPostCtrl(AppService, $cordovaCamera, ngFileUpload) {
+  function AddPostCtrl(AppService,  ItemsService, $cordovaCamera, ngFileUpload) {
     var addPostCtrl = this;
 
     addPostCtrl.selectedCountry = {};
@@ -58,19 +58,6 @@
       });
     };
 
-    // Add new photo from local storage of user
-    addPostCtrl.addLocalPhoto = function(type) {
-      var fileActive;
-
-
-      if(type === "exp") {
-        angular.element('#file-exp').click();
-      }
-      else {
-        angular.element('#file-real').click();
-      }
-
-    };
 
     addPostCtrl.upload = function (file) {
       console.log(file);
@@ -80,8 +67,10 @@
 
     // Add new post
     addPostCtrl.addPost = function() {
+     // prepare
 
-      console.log(addPostCtrl.newPost);
+      // new post
+     ItemsService.addPost(addPostCtrl.newPost);
 
     }
   }
