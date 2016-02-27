@@ -1,7 +1,9 @@
 
 angular.module('food', [
   'ionic',
+  'angucomplete-alt',
   'food.ItemsService',
+  'food.appService',
   'food.ItemsListCtrl',
   'food.footer',
   'food.AddPostCtrl',

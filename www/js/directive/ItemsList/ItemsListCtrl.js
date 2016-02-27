@@ -6,9 +6,9 @@
     .module('food.ItemsListCtrl', [])
     .controller('ItemsListCtrl', ItemsListCtrl);
 
-  ItemsListCtrl.$inject = ['ItemsService', '$location'];
+  ItemsListCtrl.$inject = ['ItemsService', 'appService'];
 
-  function ItemsListCtrl(ItemsService, $location) {
+  function ItemsListCtrl(ItemsService, AppService) {
     var itemsListCtrl = this;
 
     itemsListCtrl.domain = 'http://food.codepr.ru';
@@ -30,6 +30,9 @@
       });
     }
 
+
+    // Init app
+    AppService.init();
   }
 
 })(angular);
