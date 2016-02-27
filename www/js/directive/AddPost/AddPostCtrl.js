@@ -17,27 +17,43 @@
     addPostCtrl.userCity = AppService.getUserCity();
 
     addPostCtrl.newPost = {
-      userId: "",
-      placeId: "",
-      expectationURI: "",
-      realityURI: "",
-      description: "",
-      cityId: ""
+      "userId": "10",
+      "placeId": "1 ",
+      "exp": "",
+      "real": "",
+      "description": "",
+      "cityId": "10"
     };
+
+    addPostCtrl.tempSrcImage = {
+      exp: "",
+      real: ""
+    };
+
+    addPostCtrl.status = "";
 
     // Add new photo
     addPostCtrl.addNewPhoto = function(type) {
       Camera.getPicture().then(function(imageURI) {
-        addPostCtrl.newPost[type] = imageURI;
+        addPostCtrl.tempSrcImage[type] = imageURI;
       }, function(err) {
         console.err(err);
-        addPostCtrl.imageURI = err;
       });
     };
 
     // Add new post
     addPostCtrl.addPost = function() {
-      console.log(addPostCtrl.newPost);
+
+      var blob = new Blob([imageBase64], {type: 'image/jpg'});
+      var file1 = new File([blob], addPostCtrl.tempSrcImage.exp);
+      var file2 = new File([blob], addPostCtrl.tempSrcImage.real);
+
+      addPostCtrl.status = "Send!";
+
+      addPostCtrl.newPost.exp = file1;
+      addPostCtrl.newPost.real = file2;
+
+      AppService.addPost(addPostCtrl.newPost);
     }
   }
 

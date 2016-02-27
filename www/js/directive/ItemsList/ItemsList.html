@@ -6,7 +6,7 @@
   <ul>
     <li class="list card" ng-repeat="item in itemsListCtrl.data">
       <div class="item item-avatar">
-        <img src="../img/ben.png">
+        <img src="{{itemsListCtrl.domain +  item.userPhoto}}">
         <h2>{{item.user.name}}</h2>
         <p>Nine Inch Nails</p>
       </div>

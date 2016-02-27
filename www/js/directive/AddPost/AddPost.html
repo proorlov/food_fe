@@ -7,7 +7,7 @@
   <form>
     <div class="item-image item-image_new clearfix">
       <div
-          ng-click="addPostCtrl.addNewPhoto('expectationURI')"
+          ng-click="addPostCtrl.addNewPhoto('exp')"
           class="post-image post-image_load"
           style="background-image: url({{addPostCtrl.newPost.expectationURI}});
       ">
@@ -23,7 +23,7 @@
 
       </div>
       <div
-          ng-click="addPostCtrl.addNewPhoto('realityURI')"
+          ng-click="addPostCtrl.addNewPhoto('real')"
           class="post-image post-image_load"
           style="background-image: url({{addPostCtrl.newPost.realityURI}});
       ">
@@ -78,9 +78,14 @@
       <textarea ng-model="addPostCtrl.newPost.description" placeholder="Describe your post"></textarea>
     </label>
 
+
+    <div>
+      {{addPostCtrl.status}}
+    </div>
+
   </form>
 
 </ion-content>
-<div class="bar bar-footer bar-light" ng-click = "addPostCtrl.addPost()">
+<button class="bar bar-footer bar-light" ng-click = "addPostCtrl.addPost()">
   <a class="title">Save post</a>
-</div>
+</button>
