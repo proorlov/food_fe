@@ -2,6 +2,8 @@
 angular.module('food', [
   'ionic',
   'angucomplete-alt',
+  'ngCordova',
+  'ngCordova.plugins.instagram',
   'food.ItemsService',
   'food.appService',
   'food.AuthCtrl',
