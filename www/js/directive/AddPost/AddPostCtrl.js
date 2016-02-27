@@ -17,12 +17,12 @@
     addPostCtrl.userCity = AppService.getUserCity();
 
     addPostCtrl.newPost = {
-      userId: "0",
-      placeId: "0",
-      expectationURI: "",
-      realityURI: "",
-      description: "",
-      cityId: "1"
+      "userId": "10",
+      "placeId": "1 ",
+      "exp.jpg": "",
+      "rel.jpg": "",
+      "description": "",
+      "cityId": "10"
     };
 
     // Add new photo
