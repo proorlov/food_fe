@@ -1,6 +1,6 @@
 <div class="bar bar-header bar-light">
   <a class="button button-clear button-positive" ui-sref="ItemsList"><i style="font-size: 24px" class="ion-ios-arrow-back"></i></a>
-  <h1 class="title">Add Post</h1>
+  <h1 class="title">Добавить пост</h1>
 </div>
 <ion-content class="padding">
 
@@ -12,12 +12,10 @@
       <div class="post-image post-image_load"  ngf-background="addPostCtrl.newPost.exp"   ngf-capture='camera' ng-model="addPostCtrl.newPost.exp" ngf-select="addPostCtrl.upload($file)"  type="file" name="file" accept="image/*">
 
         <!-- Hidden file block -->
-
-        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.exp}}">
+        <div class="item-image__hint"  ng-if="!addPostCtrl.newPost.exp">
           <i class="ion-android-camera post-image__icon"></i>
-
           <span>
-            Add expectation photos
+            Фото ожидаемого блюда
           </span>
         </div>
 
@@ -28,11 +26,11 @@
 
         <!-- Hidden file block -->
 
-        <div class="item-image__hint" ng-show="{{!addPostCtrl.newPost.real}}">
+        <div class="item-image__hint" ng-if="!addPostCtrl.newPost.real">
           <i class="ion-android-camera post-image__icon"></i>
 
           <span>
-            Add expectation photos
+            Фото реального блюда
           </span>
         </div>
 
@@ -44,47 +42,55 @@
 
     <label class="item item-input item-stacked-label" style="margin-top:20px">
       <span class="input-label">
-        <i class="ion-android-pin"></i>
-        City
+        <i class="ion-map"></i>
+        Город
       </span>
-      <input type="text" value="{{addPostCtrl.userCity}}">
+      <angucomplete-alt>
+        placeholder="Начните вводить город"
+        pause="100"
+        selected-object="addPostCtrl.selectedCity"
+        local-data="addPostCtrl.cities"
+        search-fields="name"
+        title-field="name"
+      ></angucomplete-alt>
     </label>
+
+    <!--<label class="item item-input item-stacked-label" style="margin-top:20px">-->
+      <!--<span class="input-label">-->
+        <!--<i class="ion-android-pin"></i>-->
+        <!--Заведение-->
+      <!--</span>-->
+      <!--<div>-->
+        <!--<angucomplete-alt-->
+          <!--placeholder="Начните вводить название"-->
+          <!--maxlength="50"-->
+          <!--pause="100"-->
+          <!--selected-object="addPostCtrl.selectedCountry"-->
+          <!--local-data="addPostCtrl.places"-->
+          <!--search-fields="name"-->
+          <!--title-field="name"-->
+          <!--minlength="1"-->
+          <!--input-class="form-control form-control-small"-->
+          <!--match-class="highlight"-->
+        <!--&gt;</angucomplete-alt>-->
+      <!--</div>-->
+
+    <!--</label>-->
 
     <label class="item item-input item-stacked-label" style="margin-top:20px">
       <span class="input-label">
-        <i class="ion-android-pin"></i>
-        Place
+        <i class="ion-edit"></i>
+        Описание
       </span>
-      <div>
-        <angucomplete-alt
-          placeholder="Enter name of cafe"
-          maxlength="50"
-          pause="100"
-          selected-object="addPostCtrl.selectedCountry"
-          local-data="addPostCtrl.places"
-          search-fields="name"
-          title-field="name"
-          minlength="1"
-          input-class="form-control form-control-small"
-          match-class="highlight"
-        ></angucomplete-alt>
-      </div>
-
+      <textarea ng-model="addPostCtrl.newPost.description" placeholder="Небольшое описание"></textarea>
     </label>
-
-    <label class="item item-input item-stacked-label" style="margin-top:20px">
-      <span class="input-label">
-        <i class="ion-android-pin"></i>
-        Description
-      </span>
-      <textarea ng-model="addPostCtrl.newPost.description" placeholder="Describe your post"></textarea>
-    </label>
-
-
 
   </form>
 
 </ion-content>
-<button class="bar bar-footer bar-light" ng-click = "addPostCtrl.addPost()">
-  <a class="title">Save post</a>
+<button class="bar bar-footer bar-light" ng-if="!(addPostCtrl.newPost.real && addPostCtrl.newPost.description)">
+  <a class="title">Отправить пост</a>
+</button>
+<button class="bar bar-footer bar-balanced" ng-if="(addPostCtrl.newPost.real && addPostCtrl.newPost.description)" ng-click="addPostCtrl.addPost()">
+  <a class="title">{{addPostCtrl.buttonText}}</a>
 </button>

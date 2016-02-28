@@ -6,19 +6,14 @@
   <ul>
     <li class="list card" ng-repeat="item in itemsListCtrl.data">
       <div class="item item-avatar">
-        <img src="{{itemsListCtrl.domain +  item.userPhoto}}">
+        <img src="img/userpic.jpg">
         <h2>{{item.user.name}}</h2>
-        <p>Nine Inch Nails</p>
+        <p>Тестовый пользователь</p>
       </div>
 
       <div class="item item-image">
-        <div
-          class="post-image"
-          style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}});"></div>
-        <div
-          class="post-image"
-          style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}});
-        "></div>
+        <div class="post-image" style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}})"></div>
+        <div class="post-image" style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}})"></div>
       </div>
 
       <div class="item" href="#">
@@ -28,7 +23,7 @@
     </li>
 
     <button class="button button-outline button-positive col col-33 col-offset-33" ng-show="itemsListCtrl.viewLoadMore" ng-click="itemsListCtrl.loadMore()">
-        Load more
+        Загрузить еще
     </button>
   </ul>
 </ion-content>

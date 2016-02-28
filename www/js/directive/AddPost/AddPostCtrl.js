@@ -3,41 +3,41 @@
   'use strict';
 
   angular
-    .module('food.AddPostCtrl', ['ngFileUpload'])
+    .module('food.AddPostCtrl', [])
     .controller('AddPostCtrl', AddPostCtrl);
 
-  AddPostCtrl.$inject = ['appService', 'ItemsService', '$cordovaCamera'];
+  AddPostCtrl.$inject = ['appService', 'ItemsService', '$cordovaCamera', '$state'];
 
-  function AddPostCtrl(AppService,  ItemsService, $cordovaCamera, ngFileUpload) {
+  function AddPostCtrl(appService,  ItemsService, $cordovaCamera, $state) {
     var addPostCtrl = this;
+    addPostCtrl.buttonText = 'Отправить пост';
+    addPostCtrl.selectedCity = {};
 
-    addPostCtrl.selectedCountry = {};
-    addPostCtrl.countries = AppService.getCities();
-    addPostCtrl.places = AppService.getPlaces();
-    addPostCtrl.userCity = AppService.getUserCity();
-    var Camera = '';
-    addPostCtrl.options = {};
+    appService.init().then(function(data){
+      addPostCtrl.cities = data;
+    },function(error){
+      addPostCtrl.error = error;
+    });
+
+    addPostCtrl.places = appService.getPlaces();
+    addPostCtrl.userCity = appService.getUserCity();
+    addPostCtrl.validation = false;
 
     addPostCtrl.newPost = {
       "userId": "10",
       "placeId": "1 ",
-      "exp": false,
-      "real": false,
+      "exp": '',
+      "real": '',
       "description": "",
       "cityId": "10"
     };
 
 
     addPostCtrl.status = "";
-    addPostCtrl.options = {
-      quality: 10,
-      destinationType: 0
-    };
-
     // Add new photo in exp
     addPostCtrl.addNewPhotoExp = function() {
       alert(addPostCtrl.options.destinationType);
-      $cordovaCamera.getPicture(addPostCtrl.options).then(function(imageData) {
+      $cordovaCamera.getPicture().then(function(imageData) {
         addPostCtrl.newPost.exp = imageData;
       }, function(err) {
         console.err(err);
@@ -46,7 +46,7 @@
 
     // Add new photo in real
     addPostCtrl.addNewPhotoReal = function() {
-      $cordovaCamera.getPicture(addPostCtrl.options).then(function(imageData) {
+      $cordovaCamera.getPicture().then(function(imageData) {
         var reader  = new FileReader();
 
         reader.onload = function () {
@@ -63,15 +63,16 @@
       console.log(file);
     };
 
-
-
     // Add new post
-    addPostCtrl.addPost = function() {
-     // prepare
-
+    addPostCtrl.addPost = function() { // prepare
       // new post
-     ItemsService.addPost(addPostCtrl.newPost);
-
+      addPostCtrl.buttonText = "<i class='ion-loading-c'></i>";
+      ItemsService.addPost(addPostCtrl.newPost).then(function(){
+        addPostCtrl.newPost = {};
+        $state.go('ItemsList');
+      },function(){
+        addPostCtrl.buttonText = "Ошибка";
+      });
     }
   }
 
