@@ -6,9 +6,9 @@
     .module('food.ItemsListCtrl', [])
     .controller('ItemsListCtrl', ItemsListCtrl);
 
-  ItemsListCtrl.$inject = ['ItemsService', 'appService'];
+  ItemsListCtrl.$inject = ['ItemsService', 'appService', '$rootScope'];
 
-  function ItemsListCtrl(ItemsService, AppService) {
+  function ItemsListCtrl(ItemsService, AppService, $rootScope) {
     var itemsListCtrl = this;
 
     itemsListCtrl.domain = 'http://food.codepr.ru';
@@ -23,6 +23,10 @@
       itemsListCtrl.data = resp;
     });
 
+
+    $rootScope.$on('updateDataArray', function() {
+      itemsListCtrl.data = ItemsService.getLocalItems()
+    });
 
     // load more posts
     itemsListCtrl.loadMore = function() {

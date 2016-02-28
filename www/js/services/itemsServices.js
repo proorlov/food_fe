@@ -11,6 +11,7 @@
   function ItemsService($http, $q) {
 
     var self = this;
+    this.fictionData = [];
     this.data = [];
     this.state = null;
 
@@ -38,7 +39,6 @@
             return false;
           }
 
-
           deferred.resolve(self.data);
         }, function errorCallback(response) {
           deferred.reject(response);
@@ -47,7 +47,6 @@
 
       return deferred.promise;
     };
-
 
     // New post
     this.addPost = function(data) {
@@ -66,6 +65,14 @@
 
       return deferred.promise;
     };
+
+    this.getLocalItems = function(){
+      return this.fictionData.concat(this.data)
+    };
+
+    this.fictionLoad = function (item) {
+      this.fictionData.unshift(item);
+    }
 
   }
 })();

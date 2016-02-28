@@ -6,9 +6,9 @@
     .module('food.AddPostCtrl', [])
     .controller('AddPostCtrl', AddPostCtrl);
 
-  AddPostCtrl.$inject = ['appService', 'ItemsService', '$cordovaCamera', '$state'];
+  AddPostCtrl.$inject = ['appService', 'ItemsService', '$cordovaCamera', '$state', '$rootScope'];
 
-  function AddPostCtrl(appService,  ItemsService, $cordovaCamera, $state) {
+  function AddPostCtrl(appService,  ItemsService, $cordovaCamera, $state, $rootScope) {
     var addPostCtrl = this;
     addPostCtrl.buttonText = 'Отправить пост';
     addPostCtrl.selectedCity = {};
@@ -74,6 +74,19 @@
       },function(){
         addPostCtrl.buttonText = "Ошибка";
       });
+    };
+
+    addPostCtrl.addFictionPost = function() {
+      addPostCtrl.newPost.exp = addPostCtrl.newPost.exp.$ngfBlobUrl;
+      addPostCtrl.newPost.real = addPostCtrl.newPost.real.$ngfBlobUrl;
+      addPostCtrl.newPost.isLocal = true;
+
+      console.log(addPostCtrl.newPost);
+
+      ItemsService.fictionLoad(addPostCtrl.newPost);
+      addPostCtrl.newPost = {};
+      $rootScope.$emit('updateDataArray', 'emit');
+      $state.go('ItemsList');
     }
   }
 

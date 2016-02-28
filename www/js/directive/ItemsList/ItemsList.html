@@ -12,8 +12,10 @@
       </div>
 
       <div class="item item-image">
-        <div class="post-image" style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}})"></div>
-        <div class="post-image" style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}})"></div>
+        <div class="post-image" ng-show="!item.isLocal" style="background-image: url({{itemsListCtrl.domain + item.expectationUrl}})"></div>
+        <div class="post-image" ng-show="!item.isLocal" style="background-image: url({{itemsListCtrl.domain +  item.realityUrl}})"></div>
+        <div class="post-image" ng-show="item.isLocal" style="background-image: url({{item.exp}})"></div>
+        <div class="post-image" ng-show="item.isLocal" style="background-image: url({{item.real}})"></div>
       </div>
 
       <div class="item" href="#">
