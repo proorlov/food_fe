@@ -21,9 +21,9 @@
   border-left: 0;
 }
 
-.post-image_load [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
-  display: block !important;
-}
+/*.post-image_load [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {*/
+  /*display: block !important;*/
+/*}*/
 
 .item-image__hint {
   cursor: pointer;

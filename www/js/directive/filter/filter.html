@@ -1,33 +1,28 @@
 <div class="bar bar-header bar-light">
   <a class="button button-clear button-positive" ui-sref="ItemsList"><i style="font-size: 24px" class="ion-ios-arrow-back"></i></a>
-  <h1 class="title">Filter</h1>
+  <h1 class="title">Фильтр</h1>
 </div>
 <ion-content>
   <div class="padding">
     <form ng-submit="">
       <div class="list">
         <label class="item item-input item-stacked-label">
-          <span class="input-label">City</span>
+          <span class="input-label">Город</span>
           <angucomplete-alt
-            placeholder="City"
-            maxlength="50"
             pause="100"
-            selected-object="filterCtrl.selectedCity"
+            selected-object="filterCtrl.city"
             local-data="filterCtrl.cities"
             search-fields="name"
             title-field="name"
             minlength="1"
-            match-class="highlight"
           ></angucomplete-alt>
         </label>
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Place</span>
+          <span class="input-label">Заведение</span>
           <angucomplete-alt
-            placeholder="Search countries"
-            maxlength="50"
             pause="100"
-            selected-object="filterCtrl.selectedCountry"
-            local-data="filterCtrl.countries"
+            selected-object="filterCtrl.place"
+            local-data="filterCtrl.cities"
             search-fields="name"
             title-field="name"
             minlength="1"
@@ -39,4 +34,12 @@
       </button>
     </form>
   </div>
+  <angucomplete-alt
+    pause="100"
+    selected-object="filterCtrl.city"
+    local-data="filterCtrl.cities"
+    search-fields="name"
+    title-field="name"
+    minlength="1"
+  ></angucomplete-alt>
 </ion-content>

@@ -25,11 +25,12 @@
 
     addPostCtrl.newPost = {
       "userId": "10",
-      "placeId": "1 ",
+      "placeId": "2",
       "exp": '',
       "real": '',
       "description": "",
-      "cityId": "10"
+      "cityId": "10",
+      "inputFile": ''
     };
 
 
@@ -66,7 +67,7 @@
     // Add new post
     addPostCtrl.addPost = function() { // prepare
       // new post
-      addPostCtrl.buttonText = "<i class='ion-loading-c'></i>";
+      console.log(addPostCtrl.newPost);
       ItemsService.addPost(addPostCtrl.newPost).then(function(){
         addPostCtrl.newPost = {};
         $state.go('ItemsList');

@@ -53,8 +53,6 @@
     this.addPost = function(data) {
       var deferred = $q.defer();
 
-    //  var tempData =  angular.toJson(data);
-
       $http({
         method: 'POST',
         url: 'http://food.codepr.ru/addPost',
