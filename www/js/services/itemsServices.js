@@ -22,7 +22,7 @@
 
       }
       else {
-        var url = self.state == null ? 'http://food.codepr.ru/getList?count=2' : 'http://food.codepr.ru/getList?count=2&id=' + self.state;
+        var url = self.state == null ? 'http://food.codepr.ru/getList?count=200' : 'http://food.codepr.ru/getList?count=200&id=' + self.state;
 
 
         $http({
